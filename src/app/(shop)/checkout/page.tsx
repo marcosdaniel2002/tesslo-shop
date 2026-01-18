@@ -1,9 +1,7 @@
-import QuantitySelector from "@/components/products/QuantitySelector";
 import Title from "@/components/ui/Title";
 import { initialData } from "@/seed/seed";
 import Image from "next/image";
 import Link from "next/link";
-import { IoTrashOutline } from "react-icons/io5";
 
 const productsInCart = [
   initialData.products[0],
@@ -107,11 +105,11 @@ function page() {
             <div className="mt-5 mb-2 w-full">
               {/* DISCLAIMER */}
               <span className="text-xs">
-                Al hacer clic en "Colocar orden", aceptas nuestros{" "}
+                Al hacer clic en {'"'}Colocar orden{'"'}, aceptas nuestros
                 <a href="#" className="underline">
                   terminos y condiciones
-                </a>{" "}
-                y{" "}
+                </a>
+                y
                 <a href="#" className="underline">
                   politica de privacidad
                 </a>

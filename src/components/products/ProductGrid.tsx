@@ -1,6 +1,6 @@
-import { Product } from "@/interfaces/product.interfaces";
-import { Span } from "next/dist/trace";
+// import { Product } from "@/interfaces/product.interfaces";
 import ProductGridItem from "./ProductGridItem";
+import { Product } from "@/interfaces/product.interfaces";
 
 interface Props {
   products: Product[];

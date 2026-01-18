@@ -8,15 +8,9 @@ interface Props {
 async function layout({ children }: Props) {
   const session = await auth();
 
-  if (session?.user) {
-    redirect("/");
-  }
+  if (!session) redirect("/auth/login?redirectTo=/checkout/address");
 
-  return (
-    <main className="flex justify-center">
-      <div className="w-full sm:w-[450px] px-10">{children}</div>
-    </main>
-  );
+  return <>{children}</>;
 }
 
 export default layout;
