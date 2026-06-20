@@ -4,13 +4,19 @@ import prisma from "../lib/prisma";
 async function main() {
   // BORRAR REGISTROS PREVIOS
   await Promise.all([
+    prisma.orderAddress.deleteMany(),
+    prisma.orderItem.deleteMany(),
+    prisma.order.deleteMany(),
+
+    prisma.userAddress.deleteMany(),
     prisma.user.deleteMany(),
     prisma.productImage.deleteMany(),
     prisma.product.deleteMany(),
     prisma.category.deleteMany(),
+    prisma.country.deleteMany(),
   ]);
 
-  const { categories, products, users } = initialData;
+  const { categories, products, users, countries } = initialData;
 
   // USUARIOS
   await prisma.user.createMany({
@@ -27,10 +33,13 @@ async function main() {
   });
 
   const categoriesDB = await prisma.category.findMany();
-  const categoriesObject = categoriesDB.reduce((object, category) => {
-    object[category.name.toLowerCase()] = category.id;
-    return object;
-  }, {} as Record<string, string>);
+  const categoriesObject = categoriesDB.reduce(
+    (object, category) => {
+      object[category.name.toLowerCase()] = category.id;
+      return object;
+    },
+    {} as Record<string, string>,
+  );
 
   // PRODUCTOS
 
@@ -51,6 +60,11 @@ async function main() {
     }));
     await prisma.productImage.createMany({
       data: imagesData,
+    });
+
+    // PAISES
+    await prisma.country.createMany({
+      data: countries,
     });
   });
 

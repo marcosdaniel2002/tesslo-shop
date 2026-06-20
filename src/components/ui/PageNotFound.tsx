@@ -10,15 +10,12 @@ function PageNotFound() {
         <p className="font-semibold text-xl">
           Whoops! Lo sentimos mucho, pagina no encontrada.
         </p>
-        <p className="font-light">
-          <span>Puedes regresar al </span>
-          <Link
-            href={"/"}
-            className="font-normal hover:underline transition-all"
-          >
-            inicio
-          </Link>
-        </p>
+        <Link
+          href={"/"}
+          className="inline-block mt-4 px-6 py-3 bg-black text-white font-semibold rounded-lg hover:bg-gray-800 transition-colors"
+        >
+          Ir al inicio
+        </Link>
       </div>
 
       {/* IMAGEN */}

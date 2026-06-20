@@ -82,11 +82,12 @@ function SideBar() {
               <span className="ml-3 text-xl">Perfil</span>
             </Link>
             <Link
-              href="/"
+              href="/orders"
+              onClick={closeMenu}
               className="flex items-center p-4 hover:bg-gray-100 rounded transition-all"
             >
               <IoTicketOutline size={30} />
-              <span className="ml-3 text-xl">Ordenes</span>
+              <span className="ml-3 text-xl">Mis Ordenes</span>
             </Link>
 
             <div className="w-full h-px bg-gray-200 my-5"></div>
