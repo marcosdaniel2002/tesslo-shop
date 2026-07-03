@@ -1,4 +1,3 @@
-import Link from "next/link";
 import RegisterForm from "./ui/RegisterForm";
 
 export default function page() {

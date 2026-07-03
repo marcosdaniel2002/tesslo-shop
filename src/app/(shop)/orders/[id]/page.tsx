@@ -2,9 +2,10 @@ import Title from "@/components/ui/Title";
 import Image from "next/image";
 import Link from "next/link";
 import { IoCartOutline, IoCheckmarkCircleOutline } from "react-icons/io5";
+import { redirect } from "next/navigation";
 
 import { getOrderById } from "@/actions/order/get-order-by-id";
-import { redirect } from "next/navigation";
+import PayPalButton from "@/components/ui/paypal/PayPalButton";
 
 interface Props {
   params: {
@@ -132,22 +133,13 @@ async function page({ params }: Props) {
             </div>
 
             <div className="mt-5 mb-2 w-full">
-              <div
-                className={`flex items-center rounded-lg py-2 px-3.5 text-xs font-bold text-white mb-5 ${
-                  order.isPaid ? "bg-green-500" : "bg-red-500"
-                }`}
-              >
-                {order.isPaid ? (
-                  <IoCheckmarkCircleOutline size={30} />
-                ) : (
-                  <IoCartOutline size={30} />
-                )}
-                <span className="mx-2">
-                  {order.isPaid ? "Orden pagada" : "Pendiente de pago"}
-                </span>
-              </div>
+              {/* BOTON PAYPAL */}
+              {!order.isPaid && (
+                <div className="relative z-0">
+                  <PayPalButton amount={order.total} orderId={order.id} />
+                </div>
+              )}
             </div>
-
           </div>
         </div>
       </div>

@@ -6,9 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { IoTrashOutline } from "react-icons/io5";
 
-interface Props {}
-
-function ProductsInCart({}: Props) {
+function ProductsInCart() {
   const {
     cart: productsInCart,
     updateProductCart,

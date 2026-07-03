@@ -4,12 +4,12 @@ import { Product } from "@/interfaces/product.interfaces";
 import prisma from "@/lib/prisma";
 
 export const getProductBySlug = async function (
-  slug: string
+  slug: string,
 ): Promise<Product | null> {
   try {
     const product = await prisma.product.findFirst({
       include: {
-        ProductImage: {},
+        ProductImage: true,
       },
       where: {
         slug: slug,

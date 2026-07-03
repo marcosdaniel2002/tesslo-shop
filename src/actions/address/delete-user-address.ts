@@ -22,10 +22,10 @@ export async function deleteUserAddress(userId: string) {
       ok: true,
       message: "Se elimino con exito",
     };
-  } catch (err) {
+  } catch (err: any) {
     return {
       ok: false,
-      message: "No se pudo eliminar direccion de usuario",
+      message: err.message || "Error al eliminar la direccion",
     };
   }
 }

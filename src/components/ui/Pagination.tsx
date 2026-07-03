@@ -52,9 +52,9 @@ function Pagination({ totalPages }: Props) {
               <a
                 className={`${
                   currentPage === +page
-                    ? "bg-blue-500 shadow-sm text-white"
-                    : ""
-                } page-link relative block py-2.5 px-5 border-0 bg-transparent outline-none transition-all duration-300 rounded text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none`}
+                    ? "bg-gray-200 shadow-sm"
+                    : "bg-transparent"
+                } page-link relative block py-2.5 px-5 border-0 outline-none transition-all duration-300 rounded text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none`}
                 href={createPageUrl(page)}
               >
                 {page}

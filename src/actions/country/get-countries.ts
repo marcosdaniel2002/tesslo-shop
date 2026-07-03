@@ -10,7 +10,7 @@ export const getCountries = async () => {
       },
     });
     return countries;
-  } catch (err) {
+  } catch {
     return [];
   }
 };

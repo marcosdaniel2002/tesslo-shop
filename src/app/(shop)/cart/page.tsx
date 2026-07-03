@@ -1,4 +1,3 @@
-import EmptyCart from "@/components/cart/EmptyCart";
 import Title from "@/components/ui/Title";
 import Link from "next/link";
 import ProductsInCart from "./ui/ProductsInCart";

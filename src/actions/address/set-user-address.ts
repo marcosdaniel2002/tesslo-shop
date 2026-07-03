@@ -10,10 +10,10 @@ export async function setUserAddress(address: Address, userId: string) {
       ok: true,
       address: newAddress,
     };
-  } catch (err) {
+  } catch (err: any) {
     return {
       ok: false,
-      message: "No se pudo grabar la direccion",
+      message: err.message || "Error al guardar la direccion",
     };
   }
 }
@@ -50,7 +50,7 @@ async function createOrReplaceAddress(address: Address, userId: string) {
     });
 
     return updatedAddress;
-  } catch (err) {
-    throw new Error("No se pudo grabar la direccion");
+  } catch (err: any) {
+    throw new Error(err.message || "No se pudo grabar la direccion");
   }
 }

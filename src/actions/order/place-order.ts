@@ -4,7 +4,6 @@ import { auth } from "@/auth";
 import { Size } from "@/generated/prisma/enums";
 import { Address } from "@/interfaces/address.interface";
 import prisma from "@/lib/prisma";
-import { ta } from "zod/v4/locales";
 
 interface ProductToOrder {
   productId: string;

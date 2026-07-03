@@ -6,13 +6,11 @@ import { useFormState, useFormStatus } from "react-dom";
 import { authenticate, authenticateGithub } from "@/actions/auth/login";
 import { IoInformationOutline, IoLogoGithub } from "react-icons/io5";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 
 // SERVER ACTIONS CON VALIDACION DEL LADO DEL SERVIDOR
 function LoginForm() {
   const [state, dispatch] = useFormState(authenticate, undefined);
   const [isGitHubLoading, setIsGitHubLoading] = useState(false);
-  const router = useRouter();
 
   // Función para GitHub usando signIn del cliente
   const handleGitHubLogin = async () => {

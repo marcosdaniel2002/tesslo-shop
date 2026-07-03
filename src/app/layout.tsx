@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Montserrat_Alternates } from "next/font/google";
-import "./globals.css";
-import { SessionProvider } from "next-auth/react";
+import "../app/globals.css";
+import Providers from "@/components/providers/Providers";
 
 const montserrat = Montserrat_Alternates({
   weight: ["500", "700"],
@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${montserrat.className} antialiased`}>
-        <SessionProvider>{children}</SessionProvider>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

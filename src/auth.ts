@@ -51,7 +51,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     //   console.log({ auth });
     //   return true;
     // },
-    async signIn({ user, account, profile }) {
+    async signIn({ user, account, profile: _profile }) {
       // Si es login con GitHub
       if (account?.provider === "github") {
         try {
@@ -95,7 +95,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       }
       return token;
     },
-    session({ session, token, user }) {
+    session({ session, token, user: _user }) {
       session.user = token.data as any;
       return session;
     },

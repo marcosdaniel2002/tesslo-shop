@@ -1,8 +1,6 @@
 "use server";
 
 import { signIn } from "@/auth";
-import { sleep } from "@/utils/functions";
-import { error } from "console";
 import { AuthError } from "next-auth";
 
 export async function authenticate(

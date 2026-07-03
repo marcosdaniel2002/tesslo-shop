@@ -11,13 +11,12 @@ function StockLabel({ slug }: Props) {
   const [stock, setStock] = useState(0);
 
   useEffect(() => {
+    const getStock = async () => {
+      const stock = (await getStockBySlug(slug)) ?? 0;
+      setStock(stock);
+    };
     getStock();
-  }, []);
-
-  const getStock = async function () {
-    const stock = (await getStockBySlug(slug)) ?? 0;
-    setStock(stock);
-  };
+  }, [slug]);
   return <h1 className="antialiased font-bold text-xl">Stock: {stock}</h1>;
 }
 

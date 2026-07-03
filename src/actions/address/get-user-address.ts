@@ -11,7 +11,7 @@ export async function getUserAddress(userId: string) {
 
     const { countryId, address2, ...rest } = address;
     return { ...rest, country: countryId, address2: address2 ? address2 : "" };
-  } catch (err) {
-    return null;
+  } catch (err: any) {
+    return err.message || "Error al obtener la direccion del usuario";
   }
 }

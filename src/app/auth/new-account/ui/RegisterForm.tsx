@@ -27,7 +27,7 @@ function RegisterForm() {
     const { name, email, password } = data;
 
     // SERVER ACTION
-    const { resp, message, user } = await registerUser(name, email, password);
+    const { resp, message } = await registerUser(name, email, password);
     if (!resp) {
       setErrorMessage(message ?? "");
     }

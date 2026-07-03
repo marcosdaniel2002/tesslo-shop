@@ -47,7 +47,7 @@ function AddressForm({ countries, userStoredAddress }: Props) {
   const { data: session } = useSession({ required: true });
 
   const onSubmit = async (data: FormInputs) => {
-    const { rememberAddress, ...addressData } = data;
+    const { rememberAddress: _rememberAddress, ...addressData } = data;
     setAddress(addressData);
 
     if (data.rememberAddress) {
@@ -65,7 +65,7 @@ function AddressForm({ countries, userStoredAddress }: Props) {
     if (address.firstName) {
       reset(address);
     }
-  }, [address]);
+  }, [address, reset]);
 
   return (
     <form
