@@ -3,11 +3,9 @@
 import { Product } from "@/generated/prisma/client";
 import { Gender, Size } from "@/generated/prisma/enums";
 import prisma from "@/lib/prisma";
+import { saveProductImage } from "@/lib/product-images";
 import { revalidatePath } from "next/cache";
 import z from "zod";
-import { v2 as cloudinary } from "cloudinary";
-
-cloudinary.config(process.env.CLOUDINARY_URL || "");
 
 const productSchema = z.object({
   id: z.string().uuid().optional().nullable(),
@@ -79,10 +77,9 @@ export const createUpdateProduct = async function (formData: FormData) {
         .filter((image): image is File => image instanceof File && image.size > 0);
 
       if (imageFiles.length > 0) {
-        // ['https://res.cloudinary.com/...', 'https://res.cloudinary.com/...']
+        // ['asdasd.jpg', 'qweqwe.png'] -> se sirven desde /products/<filename>
         const images = await uploadImages(imageFiles);
-        if (!images)
-          throw new Error("Error al subir las imágenes en CLOUDINARY");
+        if (!images) throw new Error("Error al subir las imágenes");
 
         await tx.productImage.createMany({
           data: images.map((url) => ({
@@ -118,18 +115,9 @@ export const createUpdateProduct = async function (formData: FormData) {
 
 const uploadImages = async function (images: File[]): Promise<string[]> {
   try {
-    const uploadPromises = images.map(async (image) => {
-      const buffer = await image.arrayBuffer();
-      const base64 = Buffer.from(buffer).toString("base64");
-      const result = await cloudinary.uploader.upload(
-        `data:${image.type};base64,${base64}`,
-      );
-      return result.secure_url;
-    });
-
-    const uploadedImages = await Promise.all(uploadPromises);
-    return uploadedImages;
+    const uploadPromises = images.map((image) => saveProductImage(image));
+    return await Promise.all(uploadPromises);
   } catch (e: any) {
-    throw new Error("Error al subir las imágenes en CLOUDINARY: " + e.message);
+    throw new Error("Error al subir las imágenes: " + e.message);
   }
 };

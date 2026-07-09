@@ -1,10 +1,8 @@
 "use server";
 
 import prisma from "@/lib/prisma";
-import { v2 as cloudinary } from "cloudinary";
+import { deleteProductImage as deleteProductImageFile } from "@/lib/product-images";
 import { revalidatePath } from "next/cache";
-
-cloudinary.config(process.env.CLOUDINARY_URL || "");
 
 export const deleteProductImage = async function (imageId: number) {
   try {
@@ -14,12 +12,12 @@ export const deleteProductImage = async function (imageId: number) {
 
     if (!image) throw new Error("Imagen no encontrada");
 
-    if (!image.url.startsWith("https://res.cloudinary.com/"))
-      throw new Error("La imagen no es de Cloudinary");
+    // Las URLs que empiezan con http son imágenes legadas (ej. Cloudinary),
+    // ya no se administran desde aquí; solo se borra el registro.
+    if (!image.url.startsWith("http")) {
+      await deleteProductImageFile(image.url);
+    }
 
-    const imageName = image.url.split("/").pop()?.split(".")[0] ?? "";
-
-    await cloudinary.uploader.destroy(imageName);
     const deletedImage = await prisma.productImage.delete({
       where: { id: imageId },
       select: {
