@@ -14,15 +14,23 @@ function QuantitySelector({ quantity, onQuantityChange }: Props) {
   };
 
   return (
-    <div className="flex">
-      <button onClick={() => onChange(-1)}>
-        <IoRemoveCircleOutline size={30} />
+    <div className="flex items-center">
+      <button
+        onClick={() => onChange(-1)}
+        className="text-foreground hover:text-accent transition-colors"
+        aria-label="Restar cantidad"
+      >
+        <IoRemoveCircleOutline size={28} />
       </button>
-      <span className="w-20 mx-3 px-5 bg-gray-100 text-center rounded-sm flex items-center justify-center">
+      <span className="w-16 mx-3 py-2 bg-surface text-foreground font-semibold text-center rounded-notion shadow-sm flex items-center justify-center">
         {quantity}
       </span>
-      <button onClick={() => onChange(+1)}>
-        <IoAddCircleOutline size={30} />
+      <button
+        onClick={() => onChange(+1)}
+        className="text-foreground hover:text-accent transition-colors"
+        aria-label="Sumar cantidad"
+      >
+        <IoAddCircleOutline size={28} />
       </button>
     </div>
   );

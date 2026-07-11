@@ -44,14 +44,14 @@ function PlaceOrder() {
   }
 
   return (
-    <div className="bg-white border border-gray-100 rounded-2xl p-8 h-fit w-full max-w-sm shadow-sm">
+    <div className="bg-surface rounded-notion p-8 h-fit w-full max-w-sm shadow-md">
       {/* Dirección */}
-      <p className="text-[10px] uppercase tracking-[0.2em] text-gray-400 mb-3 font-medium">
+      <p className="text-[10px] uppercase tracking-[0.2em] text-muted mb-3 font-medium">
         Dirección de entrega
       </p>
 
-      <div className="space-y-0.5 text-sm text-gray-700 leading-relaxed mb-8">
-        <p className="font-semibold text-gray-900">
+      <div className="space-y-0.5 text-sm text-secondary leading-relaxed mb-8">
+        <p className="font-semibold text-foreground">
           {address.firstName} {address.lastName}
         </p>
         <p>{address.address}</p>
@@ -59,47 +59,52 @@ function PlaceOrder() {
         <p>
           {address.postalCode} · {address.city}
         </p>
-        <p className="text-gray-400">{address.phone}</p>
+        <p className="text-muted">{address.phone}</p>
       </div>
 
       {/* Divider */}
-      <div className="border-t border-dashed border-gray-100 mb-8" />
+      <div className="h-px bg-divider mb-8" />
 
       {/* Resumen */}
-      <p className="text-[10px] uppercase tracking-[0.2em] text-gray-400 mb-4 font-medium">
+      <p className="text-[10px] uppercase tracking-[0.2em] text-muted mb-4 font-medium">
         Resumen de orden
       </p>
 
-      <div className="space-y-2 text-sm text-gray-600 mb-6">
+      <div className="space-y-2 text-sm text-secondary mb-6">
         <div className="flex justify-between">
           <span>No. Productos</span>
-          <span className="text-gray-900">
+          <span className="text-foreground">
             {itemsInCart} articulo{itemsInCart > 1 ? "s" : ""}
           </span>
         </div>
         <div className="flex justify-between">
           <span>Subtotal</span>
-          <span className="text-gray-900">{curencyFormat(subtotal)}</span>
+          <span className="text-foreground">{curencyFormat(subtotal)}</span>
         </div>
         <div className="flex justify-between">
           <span>Impuestos (15%)</span>
-          <span className="text-gray-900">{curencyFormat(tax)}</span>
+          <span className="text-foreground">{curencyFormat(tax)}</span>
         </div>
       </div>
 
       {/* Total */}
-      <div className="flex justify-between items-center border-t border-gray-100 pt-5 mb-7">
-        <span className="text-sm font-medium text-gray-500 uppercase tracking-wide">
+      <div className="h-px bg-divider" />
+      <div className="flex justify-between items-center pt-5 mb-7">
+        <span className="text-sm font-medium text-secondary uppercase tracking-wide">
           Total
         </span>
-        <span className="text-2xl font-semibold tracking-tight text-gray-900">
+        <span className="text-2xl font-semibold tracking-tight text-foreground">
           {curencyFormat(total)}
         </span>
       </div>
-      <p className="text-red-500 text-sm">{errorMessage}</p>
+      {errorMessage && (
+        <p className="fade-in bg-danger text-black text-sm rounded-notion shadow-sm px-3 py-2 mb-4">
+          {errorMessage}
+        </p>
+      )}
       {/* CTA */}
       <button
-        className={`${isPlacingOrder ? "btn-disabled" : "btn-primary"} w-full flex items-center justify-center mt-2 active:scale-[0.98] transition-all duration-150`}
+        className={`${isPlacingOrder ? "btn-disabled" : "btn-primary"} w-full flex items-center justify-center mt-2`}
         onClick={onPlaceOrder}
         disabled={isPlacingOrder}
       >
@@ -107,18 +112,18 @@ function PlaceOrder() {
       </button>
 
       {/* Disclaimer */}
-      <p className="text-[10px] text-center text-gray-400 mt-4 leading-snug">
+      <p className="text-[10px] text-center text-muted mt-4 leading-snug">
         Al continuar, aceptas nuestros{" "}
         <a
           href="#"
-          className="underline underline-offset-2 hover:text-gray-600 transition-colors"
+          className="underline underline-offset-2 hover:text-accent transition-colors"
         >
           términos
         </a>{" "}
         y{" "}
         <a
           href="#"
-          className="underline underline-offset-2 hover:text-gray-600 transition-colors"
+          className="underline underline-offset-2 hover:text-accent transition-colors"
         >
           política de privacidad
         </a>

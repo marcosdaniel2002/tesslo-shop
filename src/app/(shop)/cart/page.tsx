@@ -12,11 +12,8 @@ function page() {
           {/* CARRITO */}
           <div className="flex flex-col mt-8">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-2xl font-semibold">Carrito de compras</h2>
-              <Link
-                href="/"
-                className="text-blue-600 hover:text-blue-700 underline text-sm"
-              >
+              <h2 className="text-2xl font-semibold text-foreground">Carrito de compras</h2>
+              <Link href="/" className="btn-dark text-sm">
                 Continuar comprando →
               </Link>
             </div>
@@ -28,8 +25,8 @@ function page() {
           </div>
 
           {/* CHECKOUT */}
-          <div className="bg-white rounded-xl shadow-xl p-7 h-fit">
-            <h2 className="text-2xl mb-2">Resumen de orden</h2>
+          <div className="bg-surface rounded-notion shadow-md p-7 h-fit">
+            <h2 className="text-2xl mb-2 text-foreground font-semibold">Resumen de orden</h2>
             <OrderSummary />
 
             <div className="mt-5 mb-2 w-full">

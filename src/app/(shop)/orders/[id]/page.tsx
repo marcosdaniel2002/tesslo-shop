@@ -30,10 +30,7 @@ async function page({ params }: Props) {
       <div className="flex flex-col w-[1000px]">
         <div className="flex items-center justify-between">
           <Title title={`Orden #${id.split("-").at(-1)}`} />
-          <Link
-            href="/orders"
-            className="inline-block px-5 py-2 bg-black text-white text-sm font-semibold rounded-lg hover:bg-gray-800 transition-colors"
-          >
+          <Link href="/orders" className="btn-dark text-sm">
             Ver mis órdenes
           </Link>
         </div>
@@ -41,8 +38,8 @@ async function page({ params }: Props) {
           {/* CARRITO */}
           <div className="flex flex-col mt-8">
             <div
-              className={`flex items-center rounded-lg py-2 px-3.5 text-xs font-bold text-white mb-5 ${
-                order.isPaid ? "bg-green-500" : "bg-red-500"
+              className={`flex items-center rounded-notion shadow-sm py-2 px-3.5 text-xs font-bold text-white mb-5 ${
+                order.isPaid ? "bg-green-500" : "bg-dangerText"
               }`}
             >
               {order.isPaid ? (
@@ -60,7 +57,7 @@ async function page({ params }: Props) {
               {order.OrderItem.map((item) => (
                 <div
                   key={item.id}
-                  className="flex gap-4 p-4 bg-white border border-gray-200 rounded-lg transition-shadow"
+                  className="flex gap-4 p-4 bg-surface rounded-notion shadow-sm transition-shadow"
                 >
                   <div className="flex-shrink-0">
                     <Image
@@ -68,22 +65,22 @@ async function page({ params }: Props) {
                       width={120}
                       height={120}
                       alt={item.product?.title ?? "Producto"}
-                      className="rounded-md object-cover"
+                      className="rounded-notion object-cover"
                     />
                   </div>
 
                   <div className="flex-1 flex flex-col justify-between">
                     <div>
-                      <h3 className="font-medium text-lg mb-1">
+                      <h3 className="font-medium text-lg text-foreground mb-1">
                         {item.product?.title}
                       </h3>
-                      <p className="text-sm text-gray-500 mb-1">
+                      <p className="text-sm text-secondary mb-1">
                         Talla: {item.size}
                       </p>
-                      <p className="text-xl">
+                      <p className="text-xl text-foreground">
                         ${item.price} x {item.quantity}
                       </p>
-                      <p className="font-bold">
+                      <p className="font-bold text-foreground">
                         Subtotal: ${item.price * item.quantity}
                       </p>
                     </div>
@@ -94,12 +91,12 @@ async function page({ params }: Props) {
           </div>
 
           {/* RESUMEN */}
-          <div className="bg-white rounded-xl shadow-xl p-7 h-fit">
-            <h2 className="text-2xl mb-2">Direccion de entrega</h2>
+          <div className="bg-surface rounded-notion shadow-md p-7 h-fit">
+            <h2 className="text-2xl mb-2 text-foreground font-semibold">Direccion de entrega</h2>
 
             {address ? (
-              <div className="mb-5">
-                <p>
+              <div className="mb-5 text-secondary">
+                <p className="font-semibold text-foreground">
                   {address.firstName} {address.lastName}
                 </p>
                 <p>{address.address}</p>
@@ -107,27 +104,27 @@ async function page({ params }: Props) {
                 <p>{address.city}</p>
                 <p>{address.country.name}</p>
                 <p>CP {address.postalCode}</p>
-                <p>Tel: {address.phone}</p>
+                <p className="text-muted">Tel: {address.phone}</p>
               </div>
             ) : (
-              <p className="text-gray-500 mb-5">Sin dirección registrada</p>
+              <p className="text-muted mb-5">Sin dirección registrada</p>
             )}
 
-            <div className="w-full h-0.5 rounded bg-gray-200 mb-5"></div>
+            <div className="w-full h-px bg-divider mb-5"></div>
 
-            <h2 className="text-2xl mb-2">Resumen de orden</h2>
-            <div className="grid grid-cols-2">
+            <h2 className="text-2xl mb-2 text-foreground font-semibold">Resumen de orden</h2>
+            <div className="grid grid-cols-2 gap-y-1 text-secondary">
               <span>No. Productos</span>
-              <span className="text-right">{order.itemsInOrder} artículos</span>
+              <span className="text-right text-foreground">{order.itemsInOrder} artículos</span>
 
               <span>Subtotal</span>
-              <span className="text-right">${order.subTotal.toFixed(2)}</span>
+              <span className="text-right text-foreground">${order.subTotal.toFixed(2)}</span>
 
               <span>Impuestos (15%)</span>
-              <span className="text-right">${order.tax.toFixed(2)}</span>
+              <span className="text-right text-foreground">${order.tax.toFixed(2)}</span>
 
-              <span className="text-2xl mt-5">Total:</span>
-              <span className="mt-5 text-2xl text-right">
+              <span className="text-2xl font-semibold text-foreground mt-5">Total:</span>
+              <span className="mt-5 text-2xl font-semibold text-foreground text-right">
                 ${order.total.toFixed(2)}
               </span>
             </div>

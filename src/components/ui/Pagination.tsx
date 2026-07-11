@@ -41,7 +41,7 @@ function Pagination({ totalPages }: Props) {
         <ul className="flex list-style-none">
           <li className="page-item">
             <Link
-              className="page-link relative block py-1.5 px-3 border-0 bg-transparent outline-none transition-all duration-300 rounded text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none"
+              className="page-link relative block py-1.5 px-3 border-0 bg-transparent outline-none transition-all duration-300 rounded-notion text-secondary hover:text-foreground hover:bg-surface focus:shadow-none"
               href={createPageUrl(currentPage - 1)}
             >
               <IoChevronBackOutline size={30} />
@@ -52,9 +52,9 @@ function Pagination({ totalPages }: Props) {
               <a
                 className={`${
                   currentPage === +page
-                    ? "bg-gray-200 shadow-sm"
-                    : "bg-transparent"
-                } page-link relative block py-2.5 px-5 border-0 outline-none transition-all duration-300 rounded text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none`}
+                    ? "bg-accent text-black"
+                    : "bg-transparent text-secondary hover:text-foreground hover:bg-surface"
+                } page-link relative block py-2.5 px-5 border-0 outline-none transition-all duration-300 rounded-notion focus:shadow-none`}
                 href={createPageUrl(page)}
               >
                 {page}
@@ -64,7 +64,7 @@ function Pagination({ totalPages }: Props) {
 
           <li className="page-item">
             <Link
-              className="page-link relative block py-1.5 px-3 border-0 bg-transparent outline-none transition-all duration-300 rounded text-gray-800 hover:text-gray-800 hover:bg-gray-200 focus:shadow-none"
+              className="page-link relative block py-1.5 px-3 border-0 bg-transparent outline-none transition-all duration-300 rounded-notion text-secondary hover:text-foreground hover:bg-surface focus:shadow-none"
               href={createPageUrl(currentPage + 1)}
             >
               <IoChevronForwardOutline size={30} />

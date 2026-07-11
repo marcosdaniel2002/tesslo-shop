@@ -13,7 +13,7 @@ async function layout({ children }: Props) {
   }
 
   return (
-    <main className="flex justify-center">
+    <main className="flex justify-center min-h-screen bg-background">
       <div className="w-full sm:w-[450px] px-10">{children}</div>
     </main>
   );

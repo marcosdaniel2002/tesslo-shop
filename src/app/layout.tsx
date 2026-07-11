@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import { Montserrat_Alternates } from "next/font/google";
+import { Inter } from "next/font/google";
 import "../app/globals.css";
 import Providers from "@/components/providers/Providers";
 
-const montserrat = Montserrat_Alternates({
-  weight: ["500", "700"],
+const inter = Inter({
+  weight: ["400", "500", "700"],
   subsets: ["latin"],
+  variable: "--font-inter",
 });
 
 export const metadata: Metadata = {
@@ -23,7 +24,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${montserrat.className} antialiased`}>
+      <body className={`${inter.variable} font-sans antialiased bg-background text-foreground`}>
         <Providers>{children}</Providers>
       </body>
     </html>

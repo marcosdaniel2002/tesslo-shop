@@ -54,7 +54,11 @@ function AddToCart({ product }: Props) {
       <button onClick={addToCart} className="btn-primary my-5">
         Agregar al carrito
       </button>
-      {error && <p className="text-red-500 mb-4 font-bold fade-in">{error}</p>}
+      {error && (
+        <p className="fade-in inline-block bg-danger text-black text-sm font-medium rounded-notion shadow-sm px-3 py-2 mb-4">
+          {error}
+        </p>
+      )}
     </>
   );
 }

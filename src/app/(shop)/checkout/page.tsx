@@ -19,11 +19,8 @@ function page() {
           {/* CARRITO */}
           <div className="flex flex-col mt-8">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-2xl font-semibold">Carrito de compras</h2>
-              <Link
-                href="/cart"
-                className="text-blue-600 hover:text-blue-700 underline text-sm"
-              >
+              <h2 className="text-2xl font-semibold text-foreground">Carrito de compras</h2>
+              <Link href="/cart" className="btn-dark text-sm">
                 Editar carrito →
               </Link>
             </div>
@@ -36,13 +33,10 @@ function page() {
             {/* Mensaje si el carrito está vacío */}
             {productsInCart.length === 0 && (
               <div className="text-center py-12">
-                <p className="text-gray-500 text-lg mb-4">
+                <p className="text-secondary text-lg mb-4">
                   Tu carrito está vacío
                 </p>
-                <Link
-                  href="/"
-                  className="text-blue-600 hover:text-blue-700 underline"
-                >
+                <Link href="/" className="text-accent hover:opacity-80 transition-opacity">
                   Ver productos
                 </Link>
               </div>

@@ -9,14 +9,16 @@ interface Props {
 function SizeSelector({ availableSizes, selectedSize, onSizeChange }: Props) {
   return (
     <div className="my-5">
-      <h3 className="font-bold mb-4">Tallas disponibles</h3>
-      <div className="flex">
+      <h3 className="font-bold text-foreground mb-3">Tallas disponibles</h3>
+      <div className="flex gap-2">
         {availableSizes.map((size) => (
           <button
             key={size}
             onClick={() => onSizeChange(size)}
-            className={`mr-4 hover:underline text-lg rounded bg-gray-200 p-2.5 ${
-              selectedSize == size && "underline !bg-blue-600 text-white"
+            className={`text-sm font-semibold rounded-notion px-3 py-2 shadow-sm hover:shadow-md active:scale-[0.98] transition-all ${
+              selectedSize == size
+                ? "bg-accent text-black"
+                : "bg-surface text-foreground"
             }`}
           >
             {size.toUpperCase()}

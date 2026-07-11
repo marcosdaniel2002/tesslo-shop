@@ -11,7 +11,7 @@ export default async function page() {
 
   if (!session?.user) {
     return (
-      <h3>
+      <h3 className="text-foreground">
         No estas autenticado, inicia sesion para continuar con el proceso de
       </h3>
     );

@@ -17,7 +17,7 @@ function ProductsInCart() {
       {productsInCart.map((product) => (
         <div
           key={`${product.slug}-${product.size}`}
-          className="flex gap-4 p-4 bg-white border border-gray-200 rounded-lg transition-shadow"
+          className="flex gap-4 p-4 bg-surface rounded-notion shadow-sm hover:shadow-md transition-shadow"
         >
           {/* Imagen del producto */}
           <div className="flex-shrink-0">
@@ -34,16 +34,16 @@ function ProductsInCart() {
           <div className="flex-1 flex flex-col justify-between">
             <div>
               <Link
-                className="hover:underline cursor-pointer"
+                className="hover:text-accent transition-colors cursor-pointer"
                 href={`/product/${product.slug}`}
               >
-                <h3 className="font-medium text-lg mb-1">{product.title}</h3>
+                <h3 className="font-medium text-lg text-foreground mb-1">{product.title}</h3>
               </Link>
-              <p className="text-lg">
+              <p className="text-sm text-secondary">
                 <b>Talla: </b>
                 {product.size}
               </p>
-              <p className="text-xl">${product.price}</p>
+              <p className="text-xl text-foreground font-semibold">${product.price}</p>
             </div>
 
             <div className="flex items-center justify-between mt-4">
@@ -55,7 +55,7 @@ function ProductsInCart() {
 
               <button
                 onClick={() => removeProductCart(product)}
-                className="text-red-600 hover:text-red-700 font-medium flex items-center gap-1 transition-colors"
+                className="text-dangerText hover:opacity-80 font-medium flex items-center gap-1 transition-opacity"
               >
                 <IoTrashOutline />
                 Remover

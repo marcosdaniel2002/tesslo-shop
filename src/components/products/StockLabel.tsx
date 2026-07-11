@@ -17,7 +17,11 @@ function StockLabel({ slug }: Props) {
     };
     getStock();
   }, [slug]);
-  return <h1 className="antialiased font-bold text-xl">Stock: {stock}</h1>;
+  return (
+    <span className="inline-block text-xs font-semibold uppercase tracking-wide text-secondary bg-surface rounded-notion px-2 py-1 shadow-sm">
+      Stock: {stock}
+    </span>
+  );
 }
 
 export default StockLabel;

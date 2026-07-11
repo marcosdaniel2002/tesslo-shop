@@ -3,28 +3,41 @@
 @tailwind utilities;
 
 :root {
-  --primary: #274494;
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --background: #f9f9f8;
+  --surface: #e6f3fe;
+  --foreground: #000000;
+  --text-secondary: #494744;
+  --muted: #78736f;
+  --accent: #ffb110;
+  --border: #31302e;
+  --divider: rgba(49, 48, 46, 0.12);
+  --danger: #fdd3cd;
+  --danger-text: #f64932;
+  --warning: #f4bf4f;
 }
-/* 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-} */ 
+
+html {
+  scroll-behavior: smooth;
+}
 
 body {
-  color: rgb(var(--foreground-rgb));
-  /* background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-start-rgb))
-      )
-      rgb(var(--background-end-rgb)) */
+  background: var(--background);
+  color: var(--foreground);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 
@@ -51,17 +64,42 @@ body {
 
 
 .btn-primary {
-  @apply bg-blue-600 hover:bg-blue-800 text-white py-2 px-4 rounded transition-all;
+  @apply bg-accent hover:opacity-90 active:scale-[0.98] text-black font-semibold py-2 px-4 rounded-notion shadow-sm hover:shadow-md transition-all;
 }
 
 .btn-danger {
-  @apply bg-red-600 hover:bg-red-800 text-white py-2 px-4 rounded transition-all;
+  @apply bg-danger hover:opacity-90 active:scale-[0.98] text-black font-semibold py-2 px-4 rounded-notion shadow-sm hover:shadow-md transition-all;
 }
 
 .btn-secondary {
-  @apply bg-gray-200 hover:bg-gray-300 text-black py-2 px-4 rounded transition-all;
+  @apply bg-surface hover:bg-background active:scale-[0.98] text-black font-medium py-2 px-4 rounded-notion shadow-sm hover:shadow-md transition-all;
+}
+
+.btn-dark {
+  @apply bg-foreground hover:opacity-90 active:scale-[0.98] text-white font-medium py-2 px-4 rounded-notion shadow-sm hover:shadow-md transition-all;
 }
 
 .btn-disabled {
-  @apply bg-gray-600 text-white py-2 px-4 rounded transition-all;
+  @apply bg-gray-300 text-muted font-semibold py-2 px-4 rounded-notion cursor-not-allowed;
+}
+
+.btn-primary:focus-visible,
+.btn-danger:focus-visible,
+.btn-secondary:focus-visible,
+.btn-dark:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.icon-btn {
+  @apply inline-flex items-center justify-center w-10 h-10 rounded-notion text-foreground bg-background shadow-sm hover:shadow-md hover:bg-surface hover:text-accent active:scale-[0.98] transition-all;
+}
+
+.input {
+  @apply w-full bg-background rounded-notion px-3 py-2 text-black shadow-sm transition-shadow;
+}
+
+.input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--accent);
 }

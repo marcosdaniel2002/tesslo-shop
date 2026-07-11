@@ -40,7 +40,7 @@ function ProductSlide({ images, title, className }: Props) {
         }}
         thumbs={{ swiper: thumbsSwiper }}
         modules={[FreeMode, Navigation, Thumbs, Autoplay]}
-        className="mySwiper2 bg-gray-300 rounded-md !h-min"
+        className="mySwiper2 bg-surface rounded-notion shadow-sm !h-min"
       >
         {images.map((image) => (
           <SwiperSlide key={image}>
